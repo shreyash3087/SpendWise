@@ -1,423 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SpendWise: Expense-Tracker</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
+      rel="stylesheet"
+    />
     <!-- <script src="https://cdn.tailwindcss.com"></script> -->
-    <link rel="stylesheet" href="input.css">
-
-</head>
-
-<body class="m-0 p-0 overflow-x-hidden">
-
+    <link rel="stylesheet" href="input.css" />
+  </head>
+  <body class="m-0 p-0 overflow-x-hidden">
     <!-- Header -->
+    <header
+      class="bg-white text-[#7fb0ba] py-[14px] min-h-[50px] flex justify-center items-center"
+    >
+      <header-content class="flex w-[1150px] items-center">
+        <logo-container
+          class="flex items-center w-[105px] h-[52px] max-w-[135px] px-[15px]"
+        >
+          <div class="text-[26px]" style="font-family: 'Playfair Display'">
+            Logo
+          </div>
+        </logo-container>
+        <div class="w-[70%] lg:w-0"></div>
+        <navigator
+          class="flex w-[75%] overflow-hidden max-lg:hidden max-lg:fixed max-lg:z-10 max-lg:top-0 max-lg:right-0 max-lg:w-[300px] max-lg:h-full max-lg:bg-white"
+          id="Navigator"
+        >
+          <ul
+            class="max-lg:py-20 max-lg:px-5 flex max-lg:block list-none"
+            id="ul"
+          >
+            <li class="p-2">
+              <a href="#expenses" style="font-weight: 600; color: #96c2db"
+                >Home</a
+              >
+            </li>
+            <li class="p-2">
+              <a
+                href="#expense-tracker"
+                class="text-[#377f8e] hover:text-[#96c2db] no-underline text-base font-normal"
+                >Expenses</a
+              >
+            </li>
+            <li class="p-2">
+              <a
+                href="#graphs"
+                class="text-[#377f8e] hover:text-[#96c2db] no-underline text-base font-normal"
+                >Graphs</a
+              >
+            </li>
+            <li class="p-2">
+              <a
+                href=""
+                class="text-[#377f8e] hover:text-[#96c2db] no-underline text-base font-normal"
+                >About Us</a
+              >
+            </li>
+            <li class="p-2">
+              <a
+                href=""
+                class="text-[#377f8e] hover:text-[#96c2db] no-underline text-base font-normal"
+                >Contact Us</a
+              >
+            </li>
+          </ul>
+        </navigator>
 
-    <header class="bg-white text-[#7fb0ba]  py-[14px] min-h-[50px] flex justify-center items-center">
-        <header-content class="flex w-[1150px] items-center">
-            <logo-container class="flex items-center w-[105px] h-[52px] max-w-[135px] px-[15px]">
-                <div class="text-[26px]" style="font-family: 'Playfair Display';">Logo</div>
-            </logo-container>
-            <div class="w-[70%] lg:w-0"></div>
-            <navigator
-                class="flex w-[75%] overflow-hidden max-lg:hidden max-lg:fixed max-lg:z-10 max-lg:top-0 max-lg:right-0 max-lg:w-[300px] max-lg:h-full max-lg:bg-white"
-                id="Navigator">
-                <ul class="max-lg:py-20 max-lg:px-5 flex max-lg:block list-none" id="ul">
-                    <li class="p-2"><a href="Index.html" style="font-weight: 600; color:#96c2db;">Home</a></li>
-                    <li class="p-2"><a href=""
-                            class="text-[#377f8e] hover:text-[#96c2db] no-underline text-base font-normal">Expenses</a>
-                    </li>
-                    <li class="p-2"><a href=""
-                            class="text-[#377f8e] hover:text-[#96c2db] no-underline text-base font-normal">Graphs</a>
-                    </li>
-                    <li class="p-2"><a href=""
-                            class="text-[#377f8e] hover:text-[#96c2db] no-underline text-base font-normal">About Us</a>
-                    </li>
-                    <li class="p-2"><a href=""
-                            class="text-[#377f8e] hover:text-[#96c2db] no-underline text-base font-normal">Contact
-                            Us</a></li>
-                </ul>
-            </navigator>
-            <button
-                class="mx-auto my-[10px] min-w-[130px] min-h-[45px] bg-[#377f8e] hover:bg-white hover:text-[#377f8e] hover:border hover:border-[#377f8e]  text-white text-base font-normal">CONTACT
-                US</button>
-            <div class="hidden z-10 mx-[20px] max-lg:block max-lg:static max-lg:right-0 max-lg:top-[25px]"
-                id="hamburger" onclick="hamburgers()">
-                <div id="bar1" class="w-[25px] h-[4px] rounded-full bg-[#377f8e] my-[4px] transition duration-300">
-                </div>
-                <div id="bar2" class="w-[25px] h-[4px] rounded-full bg-[#377f8e] my-[4px] transition duration-300">
-                </div>
-                <div id="bar3" class="w-[25px] h-[4px] rounded-full bg-[#377f8e] my-[4px] transition duration-300">
-                </div>
-            </div>
-        </header-content>
+        <button
+          class="mx-auto my-[10px] min-w-[130px] min-h-[45px] bg-[#377f8e] hover:bg-white hover:text-[#377f8e] hover:border hover:border-[#377f8e] text-white text-base font-normal"
+        >
+          CONTACT US
+        </button>
+        <div
+          class="hidden z-10 mx-[20px] max-lg:block max-lg:static max-lg:right-0 max-lg:top-[25px]"
+          id="hamburger"
+          onclick="hamburgers()"
+        >
+          <div
+            id="bar1"
+            class="w-[25px] h-[4px] rounded-full bg-[#377f8e] my-[4px] transition duration-300"
+          ></div>
+          <div
+            id="bar2"
+            class="w-[25px] h-[4px] rounded-full bg-[#377f8e] my-[4px] transition duration-300"
+          ></div>
+          <div
+            id="bar3"
+            class="w-[25px] h-[4px] rounded-full bg-[#377f8e] my-[4px] transition duration-300"
+          ></div>
+        </div>
+      </header-content>
     </header>
 
     <!-- Content -->
 
     <content>
+      <Content_Image
+        class="flex justify-center overflow-hidden w-[63.897%] h-[640px] transition duration-500 ease-in-out"
+      >
+        <img
+          src="/Images/main-bg.png"
+          class="object-cover object-center w-full h-full"
+          alt="#"
+        />
+      </Content_Image>
+      <Main_Text_Container class="absolute w-full h-[420px] top-[240px]">
+        <Content-Box
+          class="block p-2 absolute right-[50px] w-[700px] h-[420px] text-center bg-[#e5edf1] max-[760px]:static max-[760px]:block max-[760px]:mx-auto max-[760px]:w-[88%] max-[760px]:h-auto max-[760px]:pb-[60px]"
+        >
+          <Content-Heading
+            class="block pt-[40px] italic text-[50px] max-sm:text-[35px] opacity-65 text-black transition duration-500 ease-in-out"
+            style="font-family: 'Playfair Display'"
+          >
+            <h1>SpendWise - Your personal expense tracker</h1>
+          </Content-Heading>
+          <Content-Paragraph
+            class="block px-[40px] py-[10px] text-[18px] font-light text-gray-600 transition duration-500 ease-in-out"
+          >
+            <p>
+              Track expenses, organize finances, and achieve your goals
+              effortlessly with SpendWise. Manage budgets and spending trends
+              with ease!
+            </p>
+          </Content-Paragraph>
+          <Content-Button>
+            <button
+              class="mx-auto my-[10px] min-w-[130px] min-h-[45px] bg-[#377f8e] hover:bg-transparent hover:text-[#377f8e] hover:border hover:border-[#377f8e] text-white text-base font-normal"
+            >
+              GET STARTED
+            </button>
+          </Content-Button>
+        </Content-Box>
+      </Main_Text_Container>
+      <Expense_Tracker
+      id="expense-tracker"
+        class="flex flex-col justify-center items-center w-full h-auto"
+      >
+        <Text-1
+          class="block w-1/3 max-sm:w-1/2 mx-auto my-[10px] text-center bg-[#377f8e] rounded-xl text-white text-[30px] transition duration-500 ease-in-out"
+          style="font-family: 'Playfair Display'"
+          >Expenses List</Text-1
+        >
 
-        <Content_Image
-            class="flex justify-center overflow-hidden w-[63.897%] h-[640px] transition duration-500 ease-in-out">
-            <img src="main-bg.png" class="object-cover object-center w-full h-full" alt="#">
-        </Content_Image>
-        <Main_Text_Container class="absolute w-full h-[420px] top-[240px] ">
-            <Content-Box
-                class="block p-2 absolute right-[50px] w-[700px] h-[420px] text-center bg-[#e5edf1] max-[760px]:static max-[760px]:block max-[760px]:mx-auto max-[760px]:w-[88%] max-[760px]:h-auto max-[760px]:pb-[60px]">
-                <Content-Heading
-                    class="block pt-[40px] italic text-[50px] max-sm:text-[35px] opacity-65 text-black transition duration-500 ease-in-out"
-                    style="font-family: 'Playfair Display';">
-                    <h1>SpendWise - Your personal expense tracker</h1>
-                </Content-Heading>
-                <Content-Paragraph
-                    class="block px-[40px] py-[10px] text-[18px] font-light text-gray-600 transition duration-500 ease-in-out">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Omnis assumenda commodi corrupti
-                        dignissimos tempore saepe aperiam non expedita, dolores minima mollitia consequuntur animi harum
-                        tenetur.</p>
-                </Content-Paragraph>
-                <Content-Button>
-                    <button
-                        class="mx-auto my-[10px] min-w-[130px] min-h-[45px] bg-[#377f8e] hover:bg-transparent hover:text-[#377f8e] hover:border hover:border-[#377f8e]  text-white text-base font-normal">GET
-                        STARTED</button>
-                </Content-Button>
-            </Content-Box>
-        </Main_Text_Container>
-        <Expense_Tracker class="flex flex-col justify-center items-center w-full h-auto">
-            <Text-1
-                class="block w-1/3 max-sm:w-1/2 mx-auto my-[10px] text-center bg-[#377f8e] rounded-xl text-white text-[30px] transition duration-500 ease-in-out"
-                style="font-family: 'Playfair Display';">Expenses List</Text-1>
+        <!-- Main Tracker that contains all the required fields as said in the task along with some extra fields like category. -->
 
-            <!-- Main Tracker that contains all the required fields as said in the task along with some extra fields like category. -->
+        <Main_Tracker
+          class="flex max-lg:flex-col px-4 py-2 items-center w-[98%] h-full border-2"
+        >
+          <div
+            class="border-[1px] border-[#377f8e] w-[65%] max-lg:w-[100%] rounded-xl overflow-hidden"
+          >
+            <table
+              class="text-2xl max-sm:text-lg font-thin w-full h-[85%] transition-all duration-300"
+            >
+              <thead class="text-[#1d454d] bg-slate-100">
+                <tr class="w-full">
+                  <th
+                    class="px-4 w-[30%] border-[1px] border-r-[#377f8e] border-b-[#377f8e] font-light"
+                  >
+                    Expense Title
+                  </th>
+                  <th
+                    class="px-4 border-[1px] border-r-[#377f8e] border-b-[#377f8e] font-light"
+                  >
+                    Amount
+                  </th>
+                  <th
+                    class="px-4 border-[1px] border-r-[#377f8e] border-b-[#377f8e] font-light"
+                  >
+                    Date
+                  </th>
+                  <th
+                    class="px-4 border-[1px] border-r-[#377f8e] border-b-[#377f8e] font-light"
+                  >
+                    Category
+                  </th>
+                  <th class="px-4 border-[1px] border-b-[#377f8e] font-light">
+                    Delete
+                  </th>
+                </tr>
+              </thead>
+              <tbody id="tableBody"></tbody>
+            </table>
+            <div class="p-[10px] text-right">
+              <strong>Total:</strong>
+              $<span id="total-amount">0</span>
+            </div>
+          </div>
+          <div
+            class="m-2 py-2 border-2 border-[#377f8e] w-[35%] max-lg:w-[100%] h-auto rounded-xl"
+          >
+            <table class="w-full">
+              <tr>
+                <td>
+                  <Text-1
+                    class="block m-2 text-center text-2xl underline"
+                    style="font-family: Playfair Display"
+                    >Add An Expense</Text-1
+                  >
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 bg-slate-100 flex justify-center">
+                  <label for="expense-title" class="px-3 text-1xl"
+                    >Expense Title:
+                  </label>
+                  <input
+                    type="text"
+                    id="expense-title"
+                    class="px-3 bg-transparent border-[1px] rounded-xl border-gray-600"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 flex justify-center">
+                  <label for="expense-amount" class="px-3 text-1xl"
+                    >Amount:
+                  </label>
+                  <input
+                    type="number"
+                    id="expense-amount"
+                    class="px-3 bg-transparent border-[1px] rounded-xl border-gray-600"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 bg-slate-100 flex justify-center">
+                  <label for="expense-date" class="px-3 text-1xl">Date: </label>
+                  <input
+                    type="date"
+                    id="expense-date"
+                    class="px-3 bg-transparent border-[1px] rounded-xl border-gray-600"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 flex justify-center">
+                  <label for="expense-time" class="px-3 text-1xl">Time: </label>
+                  <input
+                    type="time"
+                    id="expense-time"
+                    class="px-3 bg-transparent border-[1px] rounded-xl border-gray-600"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td class="py-2 bg-slate-100 flex justify-center">
+                  <label for="expense-category" class="px-3 text-1xl"
+                    >Category:
+                  </label>
+                  <select id="expense-category">
+                    <option value="personal">Personal</option>
+                    <option value="business">Business</option>
+                    <option value="others">Others</option>
+                  </select>
+                </td>
+              </tr>
+              <tr>
+                <td class="flex justify-center items-center">
+                  <button
+                    id="add"
+                    class="mx-auto my-[10px] min-w-[130px] min-h-[45px] bg-[#377f8e] hover:bg-transparent hover:text-[#377f8e] hover:border hover:border-[#377f8e] text-white text-base font-normal"
+                  >
+                    Add Expense
+                  </button>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </Main_Tracker>
 
-            <Main_Tracker class="flex max-lg:flex-col px-4 py-2 items-center w-[98%] h-full border-2">
-                <div class="border-[1px] border-[#377f8e] w-[65%] max-lg:w-[100%] rounded-xl overflow-hidden">
-                    <table class="text-2xl max-sm:text-lg font-thin w-full h-[85%] transition-all duration-300">
-                        <thead class="text-[#1d454d] bg-slate-100 ">
-                            <tr class="w-full">
-                                <th class="px-4 w-[30%] border-[1px] border-r-[#377f8e] border-b-[#377f8e]  font-light">
-                                    Expense Title</th>
-                                <th class="px-4 border-[1px] border-r-[#377f8e] border-b-[#377f8e] font-light">Amount
-                                </th>
-                                <th class="px-4 border-[1px] border-r-[#377f8e] border-b-[#377f8e] font-light">Date</th>
-                                <th class="px-4 border-[1px] border-r-[#377f8e] border-b-[#377f8e] font-light">Category
-                                </th>
-                                <th class="px-4 border-[1px] border-b-[#377f8e] font-light">Delete</th>
-                            </tr>
-                        </thead>
-                        <tbody id="tableBody">
-
-                        </tbody>
-                    </table>
-                    <div class="p-[10px] text-right">
-                        <strong>Total:</strong>
-                        $<span id="total-amount">0</span>
-                    </div>
-                </div>
-                <div class="m-2 py-2 border-2 border-[#377f8e] w-[35%] max-lg:w-[100%] h-auto rounded-xl">
-                    <table class="w-full">
-                        <tr>
-                            <td>
-                                <Text-1 class="block m-2 text-center text-2xl underline"
-                                    style="font-family: Playfair Display;">Add An Expense</Text-1>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 bg-slate-100 flex justify-center ">
-                                <label for="expense-title" class="px-3  text-1xl ">Expense Title: </label>
-                                <input type="text" id="expense-title"
-                                    class="px-3 bg-transparent border-[1px] rounded-xl border-gray-600">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class=" py-2 flex justify-center">
-                                <label for="expense-amount" class="px-3  text-1xl ">Amount: </label>
-                                <input type="number" id="expense-amount"
-                                    class="px-3 bg-transparent border-[1px] rounded-xl border-gray-600">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 bg-slate-100 flex justify-center">
-                                <label for="expense-date" class="px-3  text-1xl ">Date: </label>
-                                <input type="date" id="expense-date"
-                                    class="px-3 bg-transparent border-[1px] rounded-xl border-gray-600">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 flex justify-center">
-                                <label for="expense-time" class="px-3  text-1xl ">Time: </label>
-                                <input type="time" id="expense-time"
-                                    class="px-3 bg-transparent border-[1px] rounded-xl border-gray-600">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="py-2 bg-slate-100 flex justify-center">
-                                <label for="expense-category" class="px-3  text-1xl ">Category: </label>
-                                <select id="expense-category">
-                                    <option value="personal">Personal</option>
-                                    <option value="business">Business</option>
-                                    <option value="others">Others</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="flex justify-center items-center">
-                                <button id="add"
-                                    class="mx-auto my-[10px] min-w-[130px] min-h-[45px] bg-[#377f8e] hover:bg-transparent hover:text-[#377f8e] hover:border hover:border-[#377f8e]  text-white text-base font-normal">Add
-                                    Expense</button>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-            </Main_Tracker>
-
-
-            <Graphs&Charts class="block w-svw">
-                <Text-1
-                    class="block w-1/3 max-sm:w-1/2 mx-auto my-[10px] text-center text-[#377f8e] rounded-xl text-[30px] transition duration-500 ease-in-out"
-                    style="font-family: 'Playfair Display';">Insights</Text-1>
-                <Main class="w-full flex justify-center max-lg:flex-col">
-                    <Bar_Graph id="bar" class="max-w-[50%]"></Bar_Graph>
-                    <Pie_Chart id="pie" class=" max-w-[50%] right-0"></Pie_Chart>
-                </Main>
-            </Graphs&Charts>
-
-        </Expense_Tracker>
-
+        <Graphs&Charts class="block w-svw">
+          <Text-1
+            class="block w-1/3 max-sm:w-1/2 mx-auto my-[10px] text-center text-[#377f8e] rounded-xl text-[30px] transition duration-500 ease-in-out"
+            style="font-family: 'Playfair Display'"
+            >Insights</Text-1
+          >
+          <main class="w-full flex justify-center max-lg:flex-col">
+            <Bar_Graph id="bar" class="max-w-[50%]"></Bar_Graph>
+            <Pie_Chart id="pie" class="max-w-[50%] right-0"></Pie_Chart>
+          </main>
+        </Graphs&Charts>
+      </Expense_Tracker>
     </content>
 
     <footer class="block relative w-full h-[250px] bg-slate-100">
-        <Text class="block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center">
-            <div class="block w-full">
-                <div class="text-[30px] text-[#377f8e] w-[100px] mx-auto text-center"
-                    style="font-family: Playfair Display;">Logo</div>
-            </div>
-            <p class="text-[20px] text-[#377f8e]">Copyright By SpendWise</p>
-            <p class="text-[20px] text-[#377f8e]">All rights reserved</p>
-        </Text>
+      <Text
+        class="block absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full text-center"
+      >
+        <div class="block w-full">
+          <div
+            class="text-[30px] text-[#377f8e] w-[100px] mx-auto text-center"
+            style="font-family: Playfair Display"
+          >
+            Logo
+          </div>
+        </div>
+        <p class="text-[20px] text-[#377f8e]">Copyright By SpendWise</p>
+        <p class="text-[20px] text-[#377f8e]">All rights reserved</p>
+      </Text>
     </footer>
 
-
     <script src="https://www.gstatic.com/charts/loader.js"></script>
-    <script>
-        const hamburger = document.getElementById("hamburger");
-        const navigator = document.getElementById('Navigator');
-        const bar1 = document.getElementById("bar1");
-        const bar2 = document.getElementById("bar2");
-        const bar3 = document.getElementById("bar3");
-        const ul = document.getElementById("ul");
-        const addBtn = document.getElementById("add");
-        const titleInput = document.getElementById("expense-title");
-        const amountInput = document.getElementById("expense-amount");
-        const dateInput = document.getElementById("expense-date");
-        const timeInput = document.getElementById("expense-time");
-        const categoryInput = document.getElementById("expense-category");
-        const totalAmountCell = document.getElementById("total-amount");
-        const expensesTableBody = document.getElementById("tableBody");
-        
-        let expenses = [];
-        let totalAmount = 0;
-
-        const inputFieldIds = ['expense-title','expense-amount','expense-date','expense-time','expense-category'];
-
-        inputFieldIds.forEach(id => {
-            const inputField = document.getElementById(id);
-            const savedData = localStorage.getItem(id);
-            if (savedData) {
-                inputField.value = savedData;
-            }
-            inputField.addEventListener('input', () => {
-                localStorage.setItem(id, inputField.value);
-            });
-        });
-        addBtn.addEventListener('click',function(){
-            const title = titleInput.value;
-            const amount = Number(amountInput.value);
-            const date = dateInput.value;
-            const time = timeInput.value;
-            const category = categoryInput.value;
-            if (title === ''){
-                console.log("Hello")
-                alert('Please enter an expense title.');
-                return;
-            }
-            if (isNaN(amount) || amount<=0){
-                alert('Please enter an expense amount.');
-                return;
-            }
-            if (date === ''){
-                alert('Please enter an expense date.');
-                return;
-            }
-            if (time === ''){
-                alert('Please enter an expense time.');
-                return;
-            }
-            if (category === ''){
-                alert('Please enter an expense category.');
-                return;
-            }
-            expenses.push({title,amount,date,category});
-            
-            totalAmount+=amount;
-            totalAmountCell.textContent = totalAmount;
-
-            const newRow = expensesTableBody.insertRow();
-            const titleCell = newRow.insertCell();
-            const amountCell = newRow.insertCell();
-            const dateCell = newRow.insertCell();
-            const categoryCell = newRow.insertCell();
-            const deleteCell = newRow.insertCell();
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'Delete';
-            deleteBtn.classList.add('mx-auto','my-[10px]','p-2','bg-[#377f8e]','text-white','text-base','font-normal');
-            titleCell.classList.add('border-[1px]','border-r-[#377f8e]','text-center');
-            amountCell.classList.add('border-[1px]','border-r-[#377f8e]','text-center');
-            dateCell.classList.add('border-[1px]','border-r-[#377f8e]','text-center');
-            categoryCell.classList.add('border-[1px]','border-r-[#377f8e]','text-center');
-            deleteCell.classList.add('border-[1px]','border-r-[#377f8e]','flex','justify-center','items-center');
-            
-            deleteBtn.addEventListener('click',function(){
-                expenses.splice(expenses.indexOf(expense),1);
-                totalAmount -= expense.amount;
-                totalAmountCell.textContent = totalAmount;
-                expensesTableBody.removeChild(newRow);
-            });
-            
-            const expense = expenses[expenses.length - 1];
-            titleCell.textContent = expense.title;
-            amountCell.textContent = expense.amount;
-            dateCell.textContent = expense.date;
-            categoryCell.textContent = expense.category;
-            deleteCell.appendChild(deleteBtn)
-        });
-        for (const expense of expenses){
-            totalAmount+=expense.amount;
-            totalAmountCell.textContent = totalAmount;
-            const newRow = expensesTableBody.insertRow();
-            const titleCell = newRow.insertCell();
-            const amountCell = newRow.insertCell();
-            const dateCell = newRow.insertCell();
-            const categoryCell = newRow.insertCell();
-            const deleteCell = newRow.insertCell();
-            const deleteBtn = document.createElement('button');
-            deleteBtn.textContent = 'Delete';
-            deleteBtn.classList.add('mx-auto','my-[7px]','p-2','bg-[#377f8e]','text-white','text-base','font-normal');
-            titleCell.classList.add('border-[1px]','border-r-[#377f8e]');
-            amountCell.classList.add('border-[1px]','border-r-[#377f8e]');
-            dateCell.classList.add('border-[1px]','border-r-[#377f8e]');
-            categoryCell.classList.add('border-[1px]','border-r-[#377f8e]');
-            deleteCell.classList.add('border-[1px]','border-r-[#377f8e]','flex','justify-center','items-center');
-            
-            deleteBtn.addEventListener('click',function(){
-                expenses.splice(expenses.indexOf(expense),1);
-                totalAmount -= expense.amount;
-                totalAmountCell.textContent = totalAmount;
-                expensesTableBody.removeChild(newRow);
-            });
-            titleCell.textContent = expense.title;
-            amountCell.textContent = expense.amount;
-            dateCell.textContent = expense.date;
-            categoryCell.textContent = expense.category;
-            deleteCell.appendChild(deleteBtn)
-        }
-
-        window.addEventListener('resize', function () {
-            var windowWidth = window.innerWidth;
-
-            if (windowWidth <= 1023) {
-                navigator.classList.remove("flex");
-                ul.classList.remove("flex");
-            } else {
-                navigator.classList.add("flex");
-                ul.classList.add("flex");
-            }
-            drawChart(windowWidth);
-        });
-        function hamburgers() {
-
-            if (bar1.classList.contains("rotate-45")) {
-                bar1.classList.remove('translate-y-[10px]', 'rotate-45');
-                bar1.classList.add('translate-y-0', 'rotate-0');
-                bar2.classList.remove("opacity-0");
-                bar3.classList.remove('translate-y-[-6px]', '-rotate-45');
-                bar3.classList.add('translate-y-0', 'rotate-0');
-                navigator.classList.add('max-lg:hidden');
-
-            } else {
-                bar1.classList.remove('translate-y-0', 'rotate-0');
-                bar1.classList.add('translate-y-[10px]', 'rotate-45');
-                bar2.classList.add("opacity-0");
-                bar3.classList.remove('translate-y-0', 'rotate-0');
-                bar3.classList.add('translate-y-[-6px]', '-rotate-45');
-                navigator.classList.remove('max-lg:hidden');
-            }
-        }
-
-        google.charts.load('current', { packages: ['corechart'] });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart(windowWidth) {
-            console.log(windowWidth)
-            const data = google.visualization.arrayToDataTable([
-                ['Category', 'Amount'],
-                ['Personal', 5000],
-                ['Business', 14000],
-                ['Others', 12600],
-            ]);
-            if (windowWidth > 800) {
-                var baroptions = {
-                    title: 'Weekly Expenses',
-                    width: 800,
-                    height: 400,
-                    colors: ['#377f8e']
-                };
-                var pieoptions = {
-                    width: 800,
-                    height: 400,
-                    colors: ['#377f8e', '#1f3c42', '#7fb0ba'],
-                    is3D: true
-                };
-            } else if (windowWidth > 500) {
-                var baroptions = {
-                    title: 'Weekly Expenses',
-                    width: 600,
-                    height: 400,
-                    colors: ['#377f8e']
-                };
-                var pieoptions = {
-                    width: 600,
-                    height: 400,
-                    colors: ['#377f8e', '#1f3c42', '#7fb0ba'],
-                    is3D: true
-                };
-            }
-            else {
-                var baroptions = {
-                    title: 'Weekly Expenses',
-                    width: 460,
-                    height: 400,
-                    colors: ['#377f8e']
-                };
-                var pieoptions = {
-                    width: 460,
-                    height: 400,
-                    colors: ['#377f8e', '#1f3c42', '#7fb0ba'],
-                    is3D: true
-                };
-
-            }
-
-            const barchart = new google.visualization.BarChart(document.getElementById('bar'));
-            const piechart = new google.visualization.PieChart(document.getElementById('pie'));
-            barchart.draw(data, baroptions);
-            piechart.draw(data, pieoptions);
-        }
-    </script>
-</body>
-
+    <script src="/script.js"></script>
+  </body>
 </html>
